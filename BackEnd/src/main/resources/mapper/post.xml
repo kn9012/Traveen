@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.post.model.mapper.PostMapper">
+	<resultMap type="post" id="post">
+		<result column="idx" property="idx" />
+		<result column="user_idx" property="userIdx" />
+		<result column="course_idx" property="courseIdx" />
+		<result column="create_date" property="createDate" />
+		<result column="view_count" property="viewCount" />
+		<result column="like_count" property="likeCount" />
+		<result column="content" property="content" />
+		<result column="title" property="title" />
+		<result column="start_date" property="startDate" />
+		<result column="end_date" property="endDate" />
+		<result column="image" property="image" />
+		<result column="user_name" property="userName" />
+	</resultMap>
+	
+	<resultMap type="postItem" id="postItem">
+		<result column="idx" property="idx" />
+		<result column="post_idx" property="postIdx" />
+		<result column="course_idx" property="courseIdx" />
+		<result column="tripinfo_idx" property="tripinfoIdx" />
+		<result column="image" property="image" />
+		<result column="place_name" property="placeName" />
+		<result column="type" property="type" />
+		<result column="category_name" property="categoryName" />
+		<result column="address" property="address" />
+		<result column="content" property="content" />
+		<result column="order" property="order" />
+	</resultMap>
+	
+	<!-- 여행 후기 게시글 등록 -->
+	<insert id="registPost" parameterType="post" useGeneratedKeys="true" keyColumn="idx" keyProperty="idx">
+	 	insert into posts(user_idx, course_idx, create_date, view_count, like_count, content, title)
+		values(#{userIdx}, #{courseIdx}, now(), 0, 0, #{content}, #{title})
+	</insert>
+	
+	<!-- 여행 후기 게시글 아이템 등록 -->
+	<insert id="registPostItem" parameterType="map">
+	 	insert into post_item (post_idx, tripinfo_idx, course_idx, content, `order`)
+	 	values
+	 	<foreach collection="list" item="item" separator=",">
+		(
+			#{postIdx},
+			#{item.tripinfoIdx},
+			#{courseIdx},
+			#{item.content},
+			#{item.order}
+		)
+		</foreach>
+	</insert>
+
+	<!-- 코스 여행 완료 -->
+	<update id="updateCourseFlag" parameterType="String">
+		update courses
+		set flag = 1
+		where idx=#{courseIdx}
+	</update>
+
+	<!-- 검색 -->
+ 	<sql id="search">
+ 		<if test="word != null and word != ''">
+ 			<if test="key == 'p.title'">
+ 				and ${key} like concat('%', #{word}, '%')
+ 			</if>
+ 		</if>
+ 	</sql>
+
+	<!-- 여행 후기 게시글 목록 -->
+	<select id="listPost" resultMap="post">
+		select p.idx, p.title, p.user_idx, p.course_idx, date_format(p.create_date, '%Y-%m-%d') create_date, p.view_count, p.like_count, p.content, p.title, p.view_count,
+		date_format(c.start_date, '%Y-%m-%d') start_date, date_format(c.end_date, '%Y-%m-%d') end_date, ti.image as image
+		from posts p
+		join courses c on p.course_idx = c.idx
+		left join courseinfo ci on c.idx = ci.course_idx and ci.order = 1
+		left join tripinfo ti on ci.tripinfo_idx = ti.idx
+		<where>
+			<include refid="search"></include>
+			<if test="userIdx != null and userIdx != ''">
+				and p.user_idx = #{userIdx}
+			</if>
+		</where>
+		order by p.create_date desc
+		limit #{start}, #{listsize}
+	</select>
+	
+	<!-- 내가 작성한 여행 후기 게시글 목록 -->
+	<select id="listMyPost" resultMap="post">
+		select p.idx, p.title, p.user_idx, p.course_idx, p.create_date, p.view_count, p.like_count, p.content, p.title, 
+		date_format(c.start_date, '%Y-%m-%d') start_date, date_format(c.end_date, '%Y-%m-%d') end_date, ti.image as image
+		from posts p
+		join courses c on p.course_idx = c.idx
+		left join courseinfo ci on c.idx = ci.course_idx and ci.order = 1
+		left join tripinfo ti on ci.tripinfo_idx = ti.idx
+		where p.user_idx = #{userIdx}
+		order by p.create_date desc
+		limit #{start}, #{listsize}
+	</select>
+	
+	<!-- 여행 후기 게시글 조회 -->
+	<select id="viewPost" parameterType="int" resultMap="post">
+		select p.idx, u.idx as user_idx, u.user_name, c.idx, date_format(p.create_date, '%Y-%m-%d') as create_date,
+		date_format(c.start_date, '%Y-%m-%d') as start_date, date_format(c.end_date, '%Y-%m-%d') as end_date,
+		p.view_count, p.like_count, p.content, p.title
+		from posts p, users u, courses c
+		where p.idx = #{idx} and p.user_idx = u.idx and p.course_idx = c.idx;
+	</select>
+	
+	<!-- 여행 후기 아이템 조회 -->
+	<!-- t.image, t.placeName, t.type, t.category_name, t.address, pi.content, pi.order -->
+	<select id="viewPostItem" parameterType="int" resultMap="postItem">
+		select pi.idx, p.idx, u.idx, c.idx, t.image, t.place_name, t.type, t.category_name, t.address, pi.content, pi.order, t.lat, t.loc
+		from posts p, users u, courses c, tripinfo t, post_item pi
+		where p.idx = #{idx} and p.idx = pi.post_idx and p.user_idx = u.idx and pi.course_idx = c.idx and pi.tripinfo_idx = t.idx;
+	</select>
+
+	<!-- 조회수 카운트 -->
+	<update id="updateHit" parameterType="int">
+		update posts
+		set view_count = view_count + 1
+		where idx = #{idx}
+	</update>
+	
+	<!-- 여행 후기 게시글 수정 -->
+	<update id="modifyPost" parameterType="post">
+		update posts
+		set content = #{content}
+		where idx = #{idx}
+	</update>
+	
+	<!-- 여행 후기 게시글 삭제 -->
+	<delete id="deletePost" parameterType="int">
+		delete from posts
+		where idx = #{idx}
+	</delete>
+	
+	<!-- idx로 여행 후기 게시글 찾기 -->
+	<select id="getPost" parameterType="int" resultMap="post">
+		select p.idx, u.idx, c.idx, date_format(p.create_date, '%Y-%m-%d') as create_date, p.view_count,
+		p.like_count, p.content, u.user_name as userName, date_format(c.start_date, '%Y-%m-%d') as startDate, date_format(c.end_date, '%Y-%m-%d') as endDate
+		from posts p, users u, courses c
+		where p.idx = #{idx} and p.user_idx = u.idx
+	</select>
+	
+	<!-- 총 여행 후기 게시글 개수 -->
+	<select id="getTotalPostCount" parameterType="map" resultType="int">
+		select count(idx)
+		from posts
+ 		<where>
+ 			<include refid="search"></include>
+ 		</where>
+	</select>
+</mapper>

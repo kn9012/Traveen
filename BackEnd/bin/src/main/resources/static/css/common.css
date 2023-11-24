@@ -1,0 +1,156 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: "Inter", sans-serif;
+  scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+header {
+  z-index: 100;
+  position: fixed;
+  width: 100%;
+  box-shadow: 0 10px 10px -10px gray;
+  background-color: #fff;
+}
+
+header .header-container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 70px;
+  line-height: 70px;
+}
+
+.header-left {
+  display: flex;
+}
+
+.header-right {
+	display: flex;
+	align-items: center;
+}
+
+#header-username {
+	color: #6B7684;
+	margin-right: 10px;
+}
+
+.header-container button {
+  background-color: #51cd89;
+  border-radius: 16px;
+  color: #fff;
+  border: none;
+  padding: 0 16px;
+  height: 34px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+#hamburger {
+  display: none;
+  cursor: pointer;
+}
+
+header a {
+  text-decoration: none;
+  color: #6b7684;
+  cursor: pointer;
+  margin-left: 34px;
+  font-size: 1em;
+}
+
+header #logo a {
+  font-size: 1.6em;
+  box-sizing: border-box;
+  color: #51cd89;
+  font-weight: bold;
+  margin-left: 0;
+}
+
+footer {
+  display: flex;
+  width: 100%;
+  padding: 80px 0;
+  background-color: #f9fbfc;
+  color: #000000;
+  font-size: 0.8em;
+}
+
+footer .footer-container {
+  display: flex;
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+footer #footer-right {
+  display: flex;
+  flex-direction: column;
+  margin-left: 40px;
+}
+
+footer #footer-right p {
+  margin-bottom: 20px;
+}
+
+/* pagination */
+.pagination-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.pagination-container ul {
+  display: flex;
+  align-items: center;
+}
+
+.page-item {
+    cursor: pointer;
+    margin-right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+}
+
+.page-item a{
+  color: #000;
+}
+
+.page-item.active {
+  background-color: #51cd89;
+}
+
+.page-item.active a{
+  color: #fff;
+}
+
+.page-item.btn-li .page-link{
+  width: 40px;
+  height: 30px;
+}
+
+.page-item:last-child .page-link a{
+  padding-right: 10px; /* 오른쪽 여백을 늘립니다. */
+}
+
+.pagination-container .divider {
+  height: 20px;
+  width: 1px;
+  background-color: #d3d3d3;
+  margin: 0 20px;
+}

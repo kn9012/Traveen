@@ -1,0 +1,52 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 29%;
+  background-color: #fff;
+  border: 1px solid #e3e3e3;
+  border-radius: 6px;
+  height: 800px;
+}
+
+.course-top {
+  display: flex;
+  align-items: center;
+  background-color: #51cd89;
+  color: #fff;
+  height: 40px;
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 20px;
+  border-radius: 6px 6px 0 0;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+  box-sizing: border-box;
+  height: 620px;
+  overflow-y: scroll;
+}
+
+#btn-sort-path {
+  background-color: #f7f8fa;
+
+  border: 1px solid #e3e3e3;
+  height: 40px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #6b7684;
+  font-weight: bold;
+}
+
+#btn-regist-course {
+  background-color: #51cd89;
+  margin: auto 20px 20px 20px;
+  border: none;
+  color: #fff;
+  height: 40px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
