@@ -36,7 +36,7 @@ public class PostItem {
 	@ApiModelProperty(value = "내용")
 	private String content;
 	/* 순서 */
-	@ApiModelProperty(value = "order")
+	@ApiModelProperty(value = "순서")
 	private int order;
 	/* 위도 */
 	@ApiModelProperty(value = "위도")
@@ -124,20 +124,11 @@ public class PostItem {
 	public void setLoc(String loc) {
 		this.loc = loc;
 	}
-	
 	@Override
 	public String toString() {
 		return "PostItem [idx=" + idx + ", postIdx=" + postIdx + ", tripinfoIdx=" + tripinfoIdx + ", courseIdx="
 				+ courseIdx + ", image=" + image + ", placeName=" + placeName + ", type=" + type + ", categoryName="
 				+ categoryName + ", address=" + address + ", content=" + content + ", order=" + order + ", lat=" + lat
-				+ ", loc=" + loc + ", getIdx()=" + getIdx() + ", getPostIdx()=" + getPostIdx() + ", getTripinfoIdx()="
-				+ getTripinfoIdx() + ", getCourseIdx()=" + getCourseIdx() + ", getImage()=" + getImage()
-				+ ", getPlaceName()=" + getPlaceName() + ", getType()=" + getType() + ", getCategoryName()="
-				+ getCategoryName() + ", getAddress()=" + getAddress() + ", getContent()=" + getContent()
-				+ ", getOrder()=" + getOrder() + ", getLat()=" + getLat() + ", getLoc()=" + getLoc() + ", getClass()="
-				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
-	}
-	
-	
-	
+				+ ", loc=" + loc + "]";
+	}	
 }

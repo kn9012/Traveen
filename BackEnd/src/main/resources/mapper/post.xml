@@ -102,7 +102,7 @@
 	
 	<!-- 여행 후기 게시글 조회 -->
 	<select id="viewPost" parameterType="int" resultMap="post">
-		select p.idx, u.idx as user_idx, u.user_name, c.idx, date_format(p.create_date, '%Y-%m-%d') as create_date,
+		select p.idx, u.idx as user_idx, u.user_name, c.idx as course_idx, date_format(p.create_date, '%Y-%m-%d') as create_date,
 		date_format(c.start_date, '%Y-%m-%d') as start_date, date_format(c.end_date, '%Y-%m-%d') as end_date,
 		p.view_count, p.like_count, p.content, p.title
 		from posts p, users u, courses c
@@ -112,22 +112,31 @@
 	<!-- 여행 후기 아이템 조회 -->
 	<!-- t.image, t.placeName, t.type, t.category_name, t.address, pi.content, pi.order -->
 	<select id="viewPostItem" parameterType="int" resultMap="postItem">
-		select pi.idx, p.idx, u.idx, c.idx, t.image, t.place_name, t.type, t.category_name, t.address, pi.content, pi.order, t.lat, t.loc
+		select pi.idx, pi.content as content, t.idx as tripinfo_idx, p.idx as post_idx, u.idx, c.idx as course_idx, t.image, t.place_name, t.type, t.category_name, t.address, pi.content, pi.order, t.lat, t.loc
 		from posts p, users u, courses c, tripinfo t, post_item pi
 		where p.idx = #{idx} and p.idx = pi.post_idx and p.user_idx = u.idx and pi.course_idx = c.idx and pi.tripinfo_idx = t.idx;
 	</select>
+	
+	<!-- 여행 후기 게시글 수정 -->
+	<update id="modifyPost" parameterType="post" useGeneratedKeys="true" keyColumn="idx" keyProperty="idx">
+		update posts
+		set title = #{title}, content = #{content}
+		where idx = #{idx}
+	</update>
+	
+	<!-- 여행 후기 아이템 수정 -->
+	<update id="modifyPostItem" parameterType="map">
+		<foreach collection="list" item="item" separator=";">
+			update post_item
+			set content = #{item.content}
+			where idx = #{item.idx}
+		</foreach>
+	</update>
 
 	<!-- 조회수 카운트 -->
 	<update id="updateHit" parameterType="int">
 		update posts
 		set view_count = view_count + 1
-		where idx = #{idx}
-	</update>
-	
-	<!-- 여행 후기 게시글 수정 -->
-	<update id="modifyPost" parameterType="post">
-		update posts
-		set content = #{content}
 		where idx = #{idx}
 	</update>
 	

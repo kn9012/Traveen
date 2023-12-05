@@ -10,7 +10,7 @@ import com.ssafy.post.model.PostList;
 public interface PostService {
 	PostList listPost(Map<String, String> map) throws Exception;
 	void registPost(Map<String, Object> map) throws Exception;
-	void modifyPost(Post post) throws Exception;
+	void modifyPost(Map<String, Object> map) throws Exception;
 	void deletePost(int idx) throws Exception;
 	Post viewPost(int idx) throws Exception;
 	List<PostItem> viewPostItem(int idx) throws Exception;

@@ -20,12 +20,20 @@
 		<result column="tel" property="tel" />
 		<result column="like_count" property="likeCount" />
 		<result column="view_count" property="viewCount" />
+		<result column="image" property="image" />
 	</resultMap>
 	
 	<resultMap type="sido" id="sido">
 		<result column="idx" property="idx" />
 		<result column="code" property="code" />
 		<result column="name" property="name" />
+	</resultMap>
+	
+	<resultMap type="liketrip" id="liketrip">
+		<result column="idx" property="idx" />
+		<result column="tripinfo_idx" property="tripinfoIdx" />
+		<result column="user_idx" property="userIdx" />
+		<result column="create_date" property="createDate" />
 	</resultMap>
 			
 	<!-- 검색 -->
@@ -46,7 +54,7 @@
 
 	<!-- 여행지 목록 -->
 	<select id="listTripinfo" parameterType="tripinfo" resultMap="tripinfo">
-		select idx, category_name, title, place_name, type, `desc`, oper_time, rest_time, restdate_content, address, lat, loc, sido_code, tel, like_count, view_count
+		select idx, category_name, title, place_name, type, `desc`, oper_time, rest_time, restdate_content, address, lat, loc, sido_code, tel, like_count, view_count, image
 		from tripinfo
  		<where>
  			<include refid="search"></include>
@@ -60,9 +68,17 @@
 	
 	<!-- 여행지 조회 -->
 	<select id="viewTripinfo" parameterType="int" resultMap="tripinfo">
-		select idx, category_name, title, place_name, type, `desc`, oper_time, rest_time, restdate_content, address, lat, loc, sido_code, tel, like_count, view_count
+		select idx, category_name, title, place_name, type, `desc`, oper_time, rest_time, restdate_content, address, lat, loc, sido_code, tel, like_count, view_count, image
 		from tripinfo
 		where idx = #{idx}
+	</select>
+	
+	<!-- 인기 여행지 목록 -->
+	<select id="listPopularTripinfo" resultMap="tripinfo">
+		select idx, title, place_name, address, image
+		from tripinfo
+		order by like_count desc
+		limit 12
 	</select>
 	
 	<!-- 조회수 카운트 -->
@@ -86,4 +102,45 @@
 		select idx, code, name 
 		from sido
 	</select>
+	
+	<!-- 여행지 좋아요 -->
+	<insert id="likeTripinfo" parameterType="liketrip">
+		insert into like_trip(tripinfo_idx, user_idx, create_date)
+		values(#{tripinfoIdx}, #{userIdx}, now())
+	</insert>
+	
+	<!-- 여행지 좋아요 취소  -->
+	<delete id="deleteLikeTripinfo" parameterType="int">
+		delete from like_trip
+		where tripinfo_idx = #{tripinfoIdx}
+	</delete>
+
+	<!-- 사용자가 찜한 여행지 리스트 -->
+	<select id="listLikeTrip" parameterType="String" resultMap="tripinfo">
+		select t.*
+		from like_trip lt
+				 join tripinfo t on lt.tripinfo_idx = t.idx
+		where lt.user_idx = #{userId}
+	</select>
+	
+	<!-- LikeTrip idx로 tripinfo idx 찾기 -->
+<!-- 	<select id="getTripinfoByLikeTripIdx" parameterType="int" resultType="int"> -->
+<!-- 		select tripinfo_idx -->
+<!-- 		from like_trip -->
+<!-- 		where idx = #{idx} -->
+<!-- 	</select> -->
+	
+	<!-- 좋아요 카운트업 -->
+	<update id="updateLike" parameterType="int">
+		update tripinfo
+		set like_count = like_count + 1
+		where idx = #{idx}
+	</update>
+	
+	<!-- 좋아요 카운트 다운 -->
+ 	<update id="updateDeleteLike" parameterType="int">
+ 		update tripinfo
+ 		set like_count = like_count - 1
+ 		where idx = #{idx}
+ 	</update>
 </mapper>

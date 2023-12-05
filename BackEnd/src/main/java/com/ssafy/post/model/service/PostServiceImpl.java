@@ -73,8 +73,22 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public void modifyPost(Post post) throws Exception {
+	public void modifyPost(Map<String, Object> map) throws Exception {
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("post", map.get("post") == null ? "" : map.get("post"));
+		param.put("courseIdx", map.get("courseIdx") == null ? "" : map.get("courseIdx"));
+		param.put("list", map.get("list") == null ? "" : map.get("list"));
+
+		// Post객체로 cast
+		Post post =  new ObjectMapper().convertValue(param.get("post"), Post.class);
+		
 		postMapper.modifyPost(post);
+
+		// 생성된 글의 고유 아이디
+		int idx = post.getIdx();
+		param.put("postIdx", idx);
+		
+		postMapper.modifyPostItem(param);
 	}
 
 	@Override

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.course.model.mapper.CourseMapper">
+	<resultMap type="course" id="course">
+		<result column="idx" property="idx"/>
+		<result column="title" property="title"/>
+		<result column="user_idx" property="userIdx"/>
+		<result column="create_date" property="createDate"/>
+		<result column="start_date" property="startDate"/>
+		<result column="end_date" property="endDate"/>
+		<result column="flag" property="flag"/>
+	</resultMap>
+	
+	<resultMap type="courseinfo" id="courseinfo">
+		<result column="idx" property="idx"/>
+		<result column="course_idx" property="courseIdx"/>
+		<result column="tripinfo_idx" property="tripinfoIdx"/>
+		<result column="order" property="order"/>
+	</resultMap>
+	
+	<!-- 코스 등록 -->
+	<insert id="registCourse" parameterType="course" useGeneratedKeys="true" keyColumn="idx" keyProperty="idx">
+	 	insert into courses (title, user_idx, start_date, end_date, flag, create_date)
+		values (#{title}, #{userIdx}, #{startDate}, #{endDate}, #{flag}, now())
+	</insert>
+	
+	<!-- 코스 아이템 등록 -->
+	<insert id="registCourseinfo" parameterType="map">
+		insert into courseinfo (course_idx, tripinfo_idx, `order`)
+		values
+		<foreach collection="courseList" item="item" separator=",">
+		(
+			#{courseIdx},
+			#{item.tripinfoIdx},
+			#{item.order}
+		)
+		</foreach>
+	</insert>
+
+	<!-- 코스 목록 -->
+	<select id="listCourse" parameterType="String" resultMap="course">
+		select idx, title, user_idx, create_date, date_format(start_date, '%Y-%m-%d') start_date, date_format(end_date, '%Y-%m-%d') end_date, flag
+		from courses
+		where user_idx = #{userIdx}
+		order by create_date desc
+	</select>
+
+	<!-- 코스 아이템 목록 -->
+	<select id="listCourseinfo" parameterType="String" resultMap="courseinfo">
+		select ci.idx, ci.course_idx, ci.content, ci.tripinfo_idx, ci.order, c.title as courseTitle, t.category_name as categoryName, t.title, t.place_name as placeName, t.type, t.address, t.lat, t.loc, t.sido_code as sidoCode, t.image
+		from courses c
+		join courseinfo ci on c.idx = ci.course_idx
+		join tripinfo t on ci.tripinfo_idx = t.idx
+		where ci.course_idx=#{courseIdx}
+		order by ci.order
+	</select>
+	
+	<!-- 코스 정보 -->
+	<select id="getCourse" parameterType="String" resultMap="course">
+		select idx, title, user_idx, create_date, date_format(start_date, '%Y-%m-%d') start_date, date_format(end_date, '%Y-%m-%d') end_date, flag
+		from courses
+		where idx=#{courseIdx}
+	</select>
+	
+	<!-- 코스 삭제 -->
+	<delete id="deleteCourse" parameterType="String">
+		delete from courses
+		where idx=#{courseIdx}
+	</delete>
+</mapper>
