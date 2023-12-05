@@ -670,3 +670,33 @@
 2023-12-05 21:57:05,466 [Worker-113: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
 2023-12-05 21:57:05,488 [Worker-113: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 26 resources
 2023-12-05 21:57:05,496 [Worker-113: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-12-05 21:57:05,496 [Worker-113: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-12-05 21:57:05,496 [Worker-113: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\User\Desktop\Traveen\EnjoyTrip_FINAL_PROJECT\BackEnd\src\test\resources
+2023-12-05 22:02:52,241 [Worker-115: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-12-05 22:02:52,241 [Worker-115: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-12-05 22:02:52,244 [Worker-115: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2023-12-05 22:02:52,252 [Worker-115: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 26 resources
+2023-12-05 22:02:52,259 [Worker-115: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-12-05 22:02:52,260 [Worker-115: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-12-05 22:02:52,260 [Worker-115: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\User\Desktop\Traveen\EnjoyTrip_FINAL_PROJECT\BackEnd\src\test\resources
+2023-12-05 22:04:04,837 [Worker-115: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-12-05 22:04:04,838 [Worker-115: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-12-05 22:04:04,842 [Worker-115: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2023-12-05 22:04:04,872 [Worker-115: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 26 resources
+2023-12-05 22:04:04,888 [Worker-115: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-12-05 22:04:04,888 [Worker-115: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-12-05 22:04:04,888 [Worker-115: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\User\Desktop\Traveen\EnjoyTrip_FINAL_PROJECT\BackEnd\src\test\resources
+2023-12-05 22:04:24,915 [Worker-113: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-12-05 22:04:24,916 [Worker-113: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-12-05 22:04:24,923 [Worker-113: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2023-12-05 22:04:24,935 [Worker-113: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 26 resources
+2023-12-05 22:04:24,949 [Worker-113: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-12-05 22:04:24,949 [Worker-113: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-12-05 22:04:24,949 [Worker-113: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\User\Desktop\Traveen\EnjoyTrip_FINAL_PROJECT\BackEnd\src\test\resources
+2023-12-05 22:05:20,085 [Worker-105: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-12-05 22:05:20,085 [Worker-105: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-12-05 22:05:20,088 [Worker-105: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2023-12-05 22:05:20,106 [Worker-105: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 26 resources
+2023-12-05 22:05:20,114 [Worker-105: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-12-05 22:05:20,114 [Worker-105: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-12-05 22:05:20,115 [Worker-105: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\User\Desktop\Traveen\EnjoyTrip_FINAL_PROJECT\BackEnd\src\test\resources

@@ -75,6 +75,14 @@ public class PostController {
 		postService.registPost(map);
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
 	}
+	
+	@GetMapping("/modify/{idx}")
+	@ApiOperation(value = "여행 후기 게시글 수정 API", notes = "Post의 idx를 PathVariable으로 받아 해당 여행 후기 게시글을 수정하는 역할을 합니다. /post/modify")
+	public ResponseEntity<?> modify(@PathVariable(value="idx") int idx) throws Exception {
+		logger.debug("modify idx : {}", idx);
+		Post post = postService.getPost(idx);
+		return ResponseEntity.ok(post);
+	}
 
 	@PutMapping("/modify")
 	@ApiOperation(value = "여행 후기 게시글 수정 API", notes = "여행 후기 게시글 수정하는 역할을 합니다. /post/modify")

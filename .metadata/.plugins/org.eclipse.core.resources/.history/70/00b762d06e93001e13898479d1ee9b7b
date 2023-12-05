@@ -73,6 +73,16 @@ public class NoticeController {
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
 	}
 	
+	@GetMapping("/modify/{idx}")
+	@ApiOperation(value = "공지사항 수정 API", notes = "Notice의 idx를 PathVariable으로 받아 해당 공지사항을 수정하는 역할을 합니다. /notice/modify")
+	public ResponseEntity<?> modify(@PathVariable(value="idx") int idx)
+			throws Exception {
+		logger.debug("modify idx : {}", idx);
+		Notice notice = noticeService.getNotice(idx);
+		
+		return ResponseEntity.ok(notice);
+	}
+
 	@PutMapping("/modify")
 	@ApiOperation(value = "공지사항 수정 API", notes = "공지사항 수정하는 역할을 합니다. /notice/modify")
 	public ResponseEntity<?> modify(@RequestBody Notice notice) throws Exception {

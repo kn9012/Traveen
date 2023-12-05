@@ -64,6 +64,15 @@ public class QnaCommentController {
 		qnaCommentService.registQnaComment(qnaComment);
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
 	}
+	
+	@GetMapping("/modify/{idx}")
+	@ApiOperation(value = "QnA 댓글 수정 API", notes = "QnaComment의 idx를 PathVariable으로 받아서 해당 QnA 댓글을 수정하는 역할을 합니다. /qna/qnaComment/modify")
+	public ResponseEntity<?> modify(@PathVariable(value="idx") int idx, Model model)
+			throws Exception {
+		logger.debug("modify idx : {}", idx);
+		QnaComment qnaComment = qnaCommentService.getQnaComment(idx);
+		return ResponseEntity.ok(qnaComment);
+	}
 
 	@PutMapping("/modify")
 	@ApiOperation(value = "QnA 댓글 수정 조회 API", notes = "QnA 댓글을 수정하는 역할을 합니다. /qna/qnaComment/modify")
