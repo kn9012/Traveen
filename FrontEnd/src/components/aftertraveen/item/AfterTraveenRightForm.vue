@@ -20,8 +20,6 @@ onMounted(() => {
       idx,
       ({ data }) => {
         setCourseList(data.postItem);
-        console.log(data);
-        // console.log(courseList.value);
       },
       (error) => console.log(error)
     );

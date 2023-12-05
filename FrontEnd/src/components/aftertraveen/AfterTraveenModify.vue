@@ -30,10 +30,10 @@ const userInfo = computed(() => memberStore.userInfo);
 const postParam = ref({
   post: {
     idx: idx,
-    title: "",
+    title: currentCourse.value.title,
     userIdx: userInfo.value.idx,
     courseIdx: currentCourse.value.idx,
-    content: "",
+    content: currentCourse.value.content,
   },
   courseIdx: currentCourse.value.idx,
   list: courseList,
@@ -45,15 +45,12 @@ const modifyAftertraveen = () => {
   } else if (postParam.value.post.content === "") {
     alert("여행 후기 요약을 입력해주세요.");
   } else {
-  console.log(courseList);
     modifyPost(
       postParam.value,
       () => {
         alert("게시글이 수정되었습니다.");
         setCourse(postParam.value.post);
         setCourseList(postParam.value.list);
-        console.log(postParam.value.post);
-        console.log(postParam.value.list);
         
         router.push({ name: "aftertraveen-detail", params: { idx: idx } });
       },
