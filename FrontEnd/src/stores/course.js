@@ -21,7 +21,8 @@ export const useCourseStore = defineStore(
     const deleteCourse = (idx) => {
       if (courseListCount.value === 1) {
         alert("적어도 하나는 존재해야 합니다.");
-      } else courseList.value = courseList.value.filter((item) => item.idx !== idx);
+      } else
+        courseList.value = courseList.value.filter((item) => item.idx !== idx);
     };
 
     const updateCourseListOrder = (oldIndex, newIndex) => {
@@ -32,7 +33,6 @@ export const useCourseStore = defineStore(
     const setCourseList = (list) => {
       courseList.value = [];
       list.map((item) => {
-        item.content = "";
         courseList.value.push(item);
       });
     };

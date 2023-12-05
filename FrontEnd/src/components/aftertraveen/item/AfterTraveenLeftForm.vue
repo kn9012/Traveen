@@ -1,13 +1,19 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import VKakaoMapLine from "@/components/common/VKakaoMapLine.vue";
 import { storeToRefs } from "pinia";
 import { useCourseStore } from "@/stores/course";
+import { detailPost } from "@/api/post";
+import { useRoute } from "vue-router";
 
 const courseStore = useCourseStore();
 const { currentCourse } = storeToRefs(courseStore);
 
+const props = defineProps({ type: String });
+
 const emit = defineEmits(["onInputTitle", "onInputContent"]);
+const route = useRoute();
+const { idx } = route.params;
 
 const title = ref("");
 const content = ref("");
@@ -19,6 +25,18 @@ const onInputTitle = () => {
 const onInputContent = () => {
   emit("onInputContent", content.value);
 };
+
+onMounted(() => {
+  props.type === "modify" &&
+    detailPost(
+      idx,
+      ({ data }) => {
+        title.value = data.post.title;
+        content.value = data.post.content;
+      },
+      (error) => console.log(error)
+    );
+});
 </script>
 
 <template>

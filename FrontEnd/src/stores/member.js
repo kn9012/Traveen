@@ -54,7 +54,6 @@ export const useMemberStore = defineStore(
             if (response.status === httpStatusCode.OK) {
               userInfo.value = response.data.userInfo;
             } else {
-              console.log("유저 정보 없음!!!!");
               router.push({ name: "login" });
             }
           },
@@ -92,11 +91,12 @@ export const useMemberStore = defineStore(
               userInfo.value.userid,
               (response) => {
                 if (response.status === httpStatusCode.OK) {
-                  console.log("리프레시 토큰 제거 성공");
+                  // console.log("리프레시 토큰 제거 성공");
                 } else {
-                  console.log("리프레시 토큰 제거 실패");
+                  // console.log("리프레시 토큰 제거 실패");
                 }
-                alert("RefreshToken 기간 만료!!! 다시 로그인해 주세요.");
+                // RefreshToken 기간 만료
+                alert("다시 로그인해 주세요.");
                 isLogin.value = false;
                 userInfo.value = null;
                 isValidToken.value = false;

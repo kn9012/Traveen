@@ -44,6 +44,11 @@ const writePost = () => {
   }
 };
 
+// 여행 후기 조회 페이지로 이동
+const goMytrip = () => {
+  router.push({ name: "mytrip"});
+};
+
 const onInputTitle = (val) => (postParam.value.post.title = val);
 const onInputContent = (val) => (postParam.value.post.content = val);
 </script>
@@ -57,7 +62,7 @@ const onInputContent = (val) => (postParam.value.post.content = val);
       <AfterTraveenRightForm />
     </div>
     <div class="btn-container">
-      <button>취소</button>
+      <button @click="goMytrip">취소</button>
       <button @click="writePost">작성하기</button>
     </div>
   </article>

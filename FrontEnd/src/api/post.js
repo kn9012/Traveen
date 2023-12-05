@@ -17,6 +17,11 @@ const detailPost = (idx, success, fail) => {
   local.get(`/post/view/${idx}`).then(success).catch(fail);
 };
 
+// 여행 후기 글 수정
+const modifyPost = (param, success, fail) => {
+  local.put(`/post/modify`, JSON.stringify(param)).then(success).catch(fail);
+};
+
 // 여행 후기 글 삭제
 const deletePost = (idx, success, fail) => {
   local.delete(`/post/delete/${idx}`).then(success).catch(fail);
@@ -27,4 +32,11 @@ const listPostItem = (postIdx, success, fail) => {
   local.get(`/post/list/${postIdx}`).then(success).catch(fail);
 };
 
-export { registPost, listPost, detailPost, deletePost, listPostItem };
+export {
+  registPost,
+  listPost,
+  detailPost,
+  modifyPost,
+  deletePost,
+  listPostItem,
+};

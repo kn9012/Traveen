@@ -5,15 +5,18 @@ import KakaoMapLine from "@/components/common/VKakaoMapLine.vue";
 import AfterTraveenDetailListItem from "@/components/aftertraveen/item/AfterTraveenDetailListItem.vue";
 import AfterTraveenCommentItem from "@/components/aftertraveen/item/AfterTraveenCommentItem.vue";
 import { detailPost, deletePost } from "@/api/post";
+import { listCourseItem } from "@/api/course";
 import { listFollowing, deleteFollowing, followUser } from "@/api/friend";
 import { useMemberStore } from "@/stores/member";
 import { useFriendStore } from "@/stores/friend";
+import { useCourseStore } from "@/stores/course";
 
 const route = useRoute();
 const router = useRouter();
 const post = ref({});
 
 const { idx } = route.params;
+//const courseIdx = ref("3");
 
 const items = ref([]);
 
@@ -23,6 +26,9 @@ const userInfo = computed(() => memberStore.userInfo);
 const friendStore = useFriendStore();
 const { setFollowingList } = friendStore;
 const { addFollowing, isMyFollowing, deleteMyFollowing } = friendStore;
+
+const courseStore = useCourseStore();
+const { setCourse } = courseStore;
 
 const followUserParam = ref({
   fromIdx: userInfo.value.idx,
@@ -91,6 +97,23 @@ const onDeleteFollow = (idx) => {
   );
 };
 
+// 여행 후기 수정 페이지로 이동
+const goAftertraveenModify = () => {
+  listCourseItem(
+    post.value.courseIdx,
+    ({ data }) => {
+      setCourse({
+        idx: data.courseIdx,
+        title: data.courseTitle,
+        startDate: data.startDate,
+        endDate: data.endDate,
+      });
+    },
+    (error) => console.log(error)
+    );
+    router.push({ name: "aftertraveen-modify", params: { idx } });
+};
+
 const goAftertraveenListpage = () => {
   window.scrollTo(0, 0);
   router.push({ name: "aftertraveen-list" });
@@ -103,7 +126,7 @@ const goAftertraveenListpage = () => {
       <div class="title">{{ post.title }}</div>
       <div v-if="post.userIdx === userInfo.idx" class="button-wrap">
         <button @click="onPostDelete">삭제</button>
-        <button>수정</button>
+        <button @click="goAftertraveenModify">수정</button>
       </div>
       <div v-else class="button-wrap"></div>
     </div>
