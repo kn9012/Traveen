@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.postComment.model.mapper.PostCommentMapper">
+	<resultMap type="postComment" id="postComment">
+		<result column="idx" property="idx" />
+		<result column="user_idx" property="userIdx" />
+		<result column="post_idx" property="postIdx" />
+		<result column="content" property="content" />
+		<result column="create_date" property="createDate" />
+	</resultMap>
+	
+	<!-- 게시글별 PostComment 목록 -->
+	<select id="listPostComment" resultMap="postComment">
+		select pc.idx, u.idx as user_idx, u.user_name as userName, pc.post_idx, pc.content, pc.create_date
+		from post_comments pc, users u
+		where pc.user_idx = u.idx and pc.post_idx  = #{postIdx}
+		order by create_date
+	</select>
+	
+	<!-- 사용자별 PostComment 목록 -->
+	<select id="listPostCommentByUserIdx" resultMap="postComment">
+		select pc.idx, u.idx as userIdx, u.user_name as userName, pc.post_idx, pc.content, date_format(p.create_date, '%Y-%m-%d')
+		from post_comments pc, users u
+		where pc.user_idx = u.idx and pc.user_idx  = #{userIdx}
+		order by create_date
+	</select>
+
+	<!-- PostComment 조회 -->
+<!-- 	<select id="viewPostComment" parameterType="int" resultMap="postComment"> -->
+<!-- 		select idx, user_idx, post_idx, content, create_date -->
+<!-- 		from post_comments -->
+<!-- 		where post_idx = #{idx} -->
+<!-- 	</select> -->
+	
+	<!-- PostComment 등록 -->
+	<insert id="registPostComment" parameterType="postComment">
+		insert into post_comments(user_idx, post_idx, content, create_date)
+		values(#{userIdx}, #{postIdx}, #{content}, now())
+	</insert>
+	
+	<!-- PostComment 삭제 -->
+	<delete id="deletePostComment" parameterType="int">
+		delete from post_comments
+		where idx = #{idx}
+	</delete>
+	
+	<!-- idx로 PostComment 찾기 -->
+<!-- 	<select id="getPostComment" parameterType="int" resultMap="postComment"> -->
+<!-- 		select idx, user_idx, post_idx, content, create_date -->
+<!-- 		from post_comments -->
+<!-- 		where post_idx = #{idx} -->
+<!-- 	</select> -->
+</mapper>

@@ -31,12 +31,19 @@ public class PostCommentController {
 		this.postCommentService = postCommentService;
 	}
 	
-	@GetMapping("/list/{idx}")
-	@ApiOperation(value = "여행 후기 댓글 목록 조회 API", notes = "여행 후기 댓글 목록을 조회하는 역할을 합니다. /post/postComment/list")
-	public ResponseEntity<?> list(@PathVariable(value="idx") int idx) throws Exception {
-		logger.debug("list postComment idx : {}", idx);
-		List<PostComment> list = postCommentService.listPostComment();
-		System.out.println(list);
+	@GetMapping("/list/post/{postIdx}")
+	@ApiOperation(value = "여행 후기 댓글 목록 조회 API", notes = "해당 여행 후기의 댓글 목록을 조회하는 역할을 합니다. /post/postComment/list")
+	public ResponseEntity<?> list(@PathVariable(value="postIdx") int postIdx) throws Exception {
+		logger.debug("list postComment postIdx : {}", postIdx);
+		List<PostComment> list = postCommentService.listPostComment(postIdx);
+		return ResponseEntity.ok(list);
+	}
+	
+	@GetMapping("/list/user/{userIdx}")
+	@ApiOperation(value = "여행 후기 댓글 목록 조회 API", notes = "사용자별 여행 후기 댓글 목록을 조회하는 역할을 합니다. /post/postComment/list")
+	public ResponseEntity<?> listUser(@PathVariable(value="userIdx") int userIdx) throws Exception {
+		logger.debug("list postComment userIdx : {}", userIdx);
+		List<PostComment> list = postCommentService.listPostCommentByUserIdx(userIdx);
 		return ResponseEntity.ok(list);
 	}
 	

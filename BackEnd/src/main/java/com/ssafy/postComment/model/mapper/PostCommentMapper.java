@@ -9,7 +9,8 @@ import com.ssafy.postComment.model.PostComment;
 
 @Mapper
 public interface PostCommentMapper {
-	List<PostComment> listPostComment() throws SQLException;
+	List<PostComment> listPostComment(int postIdx) throws SQLException;
+	List<PostComment> listPostCommentByUserIdx(int userIdx) throws SQLException;
 	void registPostComment(PostComment postComment) throws SQLException;
 	void deletePostComment(int idx) throws SQLException;
 	void modifyPostComment(PostComment postComment) throws SQLException;

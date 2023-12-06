@@ -17,8 +17,13 @@ public class PostCommentServiceImpl implements PostCommentService {
 	}
 
 	@Override
-	public List<PostComment> listPostComment() throws Exception {
-		return postCommentMapper.listPostComment();
+	public List<PostComment> listPostComment(int postIdx) throws Exception {
+		return postCommentMapper.listPostComment(postIdx);
+	}
+
+	@Override
+	public List<PostComment> listPostCommentByUserIdx(int userIdx) throws Exception {
+		return postCommentMapper.listPostCommentByUserIdx(userIdx);
 	}
 
 	@Override

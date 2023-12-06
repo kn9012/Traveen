@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted, computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
+import { storeToRefs } from "pinia";
 import KakaoMapLine from "@/components/common/VKakaoMapLine.vue";
 import AfterTraveenDetailListItem from "@/components/aftertraveen/item/AfterTraveenDetailListItem.vue";
 import AfterTraveenCommentItem from "@/components/aftertraveen/item/AfterTraveenCommentItem.vue";
@@ -10,6 +11,7 @@ import { listFollowing, deleteFollowing, followUser } from "@/api/friend";
 import { useMemberStore } from "@/stores/member";
 import { useFriendStore } from "@/stores/friend";
 import { useCourseStore } from "@/stores/course";
+import { usePostCommentStore } from "@/stores/postComment";
 
 const route = useRoute();
 const router = useRouter();
@@ -30,6 +32,10 @@ const { addFollowing, isMyFollowing, deleteMyFollowing } = friendStore;
 
 const courseStore = useCourseStore();
 const { setCourse } = courseStore;
+
+const postCommentStore = usePostCommentStore();
+const { addComment, setCommentList } = postCommentStore;
+const { commentList } = storeToRefs(postCommentStore);
 
 const followUserParam = ref({
   fromIdx: userInfo.value.idx,
@@ -125,14 +131,18 @@ const goAftertraveenListpage = () => {
 const postComment = ref({
   idx: "",
   userIdx: userInfo.value.idx,
+  userName: "",
   postIdx: idx,
   content: "",
 });
 
-const writePostComment = () => {
+const writeAftertraveenComment = () => {
   registPostComment(
     postComment.value,
     () => {
+      postComment.value.content = "";
+      addComment(postComment.value);
+      console.log(commentList);
     },
     (error) => console.log(error)
   );
@@ -142,7 +152,9 @@ const listAftertraveenComment = () => {
   listPostComment(
     idx,
     ({ data }) => {
+      setCommentList(data);
       postComments.value = data;
+      console.log(commentList);
     },
     (error) => console.log(error)
   );
@@ -201,11 +213,11 @@ const listAftertraveenComment = () => {
   <div class="comments-wrap">
     <div class="comment-title">Comments</div>
     <div class="comment-content">
-      <AfterTraveenCommentItem v-for="postComment in postComments" :key="postComment.idx" :postComment="postComment"/>
+      <AfterTraveenCommentItem v-for="postComment in commentList" :key="postComment.idx" :postComment="postComment"/>
     </div>
     <div class="input-wrap">
       <input type="text" placeholder="댓글 달기.." v-model="postComment.content"/>
-      <button @click="writePostComment">등록</button>
+      <button @click="writeAftertraveenComment">등록</button>
     </div>
   </div>
 

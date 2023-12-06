@@ -5,7 +5,8 @@ import java.util.List;
 import com.ssafy.postComment.model.PostComment;
 
 public interface PostCommentService {
-	List<PostComment> listPostComment() throws Exception;
+	List<PostComment> listPostComment(int postIdx) throws Exception;
+	List<PostComment> listPostCommentByUserIdx(int userIdx) throws Exception;
 	void registPostComment(PostComment postComment) throws Exception;
 	void deletePostComment(int idx) throws Exception;
 	PostComment viewPostComment(int idx) throws Exception;
