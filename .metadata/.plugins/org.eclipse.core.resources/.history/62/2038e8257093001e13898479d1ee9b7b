@@ -1,0 +1,5 @@
+package com.ssafy.postComment.model.mapper;
+
+public class PostCommentService {
+
+}

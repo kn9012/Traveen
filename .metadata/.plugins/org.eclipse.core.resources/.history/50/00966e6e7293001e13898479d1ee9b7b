@@ -1,0 +1,50 @@
+package com.ssafy.postComment.model.service;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.ssafy.postComment.model.PostComment;
+import com.ssafy.postComment.model.mapper.PostCommentMapper;
+import com.ssafy.qnaComment.model.QnaComment;
+
+@Service
+public class PostCommentServiceImpl {
+	private PostCommentMapper postCommentMapper;
+
+	public PostCommentServiceImpl(PostCommentMapper postCommentMapper) {
+		super();
+		this.postCommentMapper = postCommentMapper;
+	}
+	
+	@Override
+	public List<PostComment> listPostComment() throws Exception {
+		return qnaCommentMapper.listQnaComment();
+	}
+
+	@Override
+	public void registQnaComment(QnaComment qnaComment) throws SQLException {
+		qnaCommentMapper.registQnaComment(qnaComment);
+	}
+
+	@Override
+	public void deleteQnaComment(int idx) throws SQLException {
+		qnaCommentMapper.deleteQnaComment(idx);
+	}
+
+	@Override
+	public void modifyQnaComment(QnaComment qnaComment) throws SQLException {
+		qnaCommentMapper.modifyQnaComment(qnaComment);
+	}
+
+	@Override
+	public QnaComment viewQnaComment(int idx) throws SQLException {
+		return qnaCommentMapper.viewQnaComment(idx);
+	}
+
+	@Override
+	public QnaComment getQnaComment(int idx) throws SQLException {
+		return qnaCommentMapper.getQnaComment(idx);
+	}
+}

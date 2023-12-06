@@ -1,0 +1,22 @@
+package com.ssafy.postComment.controller;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ssafy.postComment.model.service.PostCommentService;
+import com.ssafy.qnaComment.model.service.QnaCommentService;
+
+@RestController
+@RequestMapping("/post/postComment")
+public class PostCommentController {
+	private final Logger logger = LoggerFactory.getLogger(PostCommentController.class);
+	
+	private PostCommentService postCommentService;
+
+	public PostCommentController(PostCommentService postCommentService) {
+		super();
+		this.postCommentService = postCommentService;
+	}
+}

@@ -41,7 +41,6 @@ public class QnaCommentController {
 	@ApiOperation(value = "QnA 댓글 목록 조회 API", notes = "QnA 댓글 목록을 조회하는 역할을 합니다. /qna/qnaComment/list")
 	public ResponseEntity<?> list() throws Exception {
 		List<QnaComment> list = qnaCommentService.listQnaComment();
-		System.out.println("list:" + list);
 		return ResponseEntity.ok(list);
 	}
 	
@@ -50,16 +49,13 @@ public class QnaCommentController {
 	public ResponseEntity<?> view(@PathVariable(value="idx") int idx)
 			throws Exception {
 		logger.debug("view qnaComment idx : {}", idx);
-		System.out.println("view: " + idx);
 		QnaComment qnaComment = qnaCommentService.viewQnaComment(idx);
-		System.out.println(qnaComment);
 		return ResponseEntity.ok(qnaComment);
 	}
 	
 	@PostMapping("/regist")
 	@ApiOperation(value = "QnA 댓글 등록 API", notes = "QnA 댓글을 등록하는 역할을 합니다. /qna/qnaComment/regist")
-	public ResponseEntity<?> regist(@RequestBody QnaComment qnaComment, HttpSession session,
-			RedirectAttributes redirectAttributes) throws Exception {
+	public ResponseEntity<?> regist(@RequestBody QnaComment qnaComment) throws Exception {
 		logger.debug("write qnaComment : {}", qnaComment);
 		qnaCommentService.registQnaComment(qnaComment);
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
@@ -75,11 +71,10 @@ public class QnaCommentController {
 	
 	@DeleteMapping("/delete/{idx}")
 	@ApiOperation(value = "QnA 댓글 삭제 API", notes = "QnA 댓글의 idx를 PathVariable으로 받아서 QnA 댓글 삭제하는 역할을 합니다. /qna/qnaComment/delete")
-	public ResponseEntity<?> delete(@PathVariable("idx") int idx, Model model, RedirectAttributes rttr)
+	public ResponseEntity<?> delete(@PathVariable("idx") int idx)
 			throws Exception {
 		logger.debug("delete qna idx : {}", idx);
 		qnaCommentService.deleteQnaComment(idx);
-		rttr.addFlashAttribute("msg", "QnA 댓글이 삭제되었습니다.");
 		return ResponseEntity.ok().build();
 	}
 }

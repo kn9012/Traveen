@@ -1,0 +1,19 @@
+package com.ssafy.postComment.model.mapper;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+
+import com.ssafy.postComment.model.PostComment;
+import com.ssafy.qnaComment.model.QnaComment;
+
+@Mapper
+public interface PostCommentMapper {
+	List<PostComment> listPostComment() throws SQLException;
+	void registPostComment(PostComment postComment) throws SQLException;
+	void deletePostComment(int idx) throws SQLException;
+	void modifyPostComment(PostComment postComment) throws SQLException;
+	QnaComment viewPostComment(int idx) throws SQLException;
+	QnaComment getPostComment(int idx) throws SQLException;
+}

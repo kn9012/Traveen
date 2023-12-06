@@ -1,0 +1,5 @@
+package com.ssafy.postComment.model.service;
+
+public class PostCommentServiceImpl {
+
+}

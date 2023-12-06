@@ -1,0 +1,5 @@
+package com.ssafy.postComment.controller;
+
+public class PostCommentController {
+	
+}

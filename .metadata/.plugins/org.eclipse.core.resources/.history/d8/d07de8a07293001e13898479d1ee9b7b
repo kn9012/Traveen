@@ -1,0 +1,17 @@
+package com.ssafy.postComment.model.service;
+
+import org.springframework.stereotype.Service;
+
+import com.ssafy.postComment.model.mapper.PostCommentMapper;
+
+@Service
+public class PostCommentServiceImpl implements PostCommentService {
+	private PostCommentMapper postCommentMapper;
+
+	public PostCommentServiceImpl(PostCommentMapper postCommentMapper) {
+		super();
+		this.postCommentMapper = postCommentMapper;
+	}
+	
+	
+}

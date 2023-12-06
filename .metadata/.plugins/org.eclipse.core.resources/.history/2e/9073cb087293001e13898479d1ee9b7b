@@ -1,0 +1,16 @@
+package com.ssafy.postComment.model.service;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import com.ssafy.postComment.model.PostComment;
+import com.ssafy.qnaComment.model.QnaComment;
+
+public interface PostCommentService {
+	List<PostComment> listPostComment() throws Exception;
+	void registPostComment(PostComment postComment) throws SQLException;
+	void deletePostComment(int idx) throws SQLException;
+	void modifyPostComment(PostComment postComment) throws SQLException;
+	QnaComment viewPostComment(int idx) throws SQLException;
+	QnaComment getPostComment(int idx) throws SQLException;
+}

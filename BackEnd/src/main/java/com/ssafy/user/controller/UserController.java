@@ -183,7 +183,7 @@ public class UserController {
 		if (jwtUtil.checkToken(request.getHeader("Authorization"))) {
 			logger.info("사용 가능한 토큰!!!");
 			try {
-//				로그인 사용자 정보.
+				// 로그인 사용자 정보.
 				User user = userService.getUserById(userId);
 				resultMap.put("userInfo", user);
 				status = HttpStatus.OK;

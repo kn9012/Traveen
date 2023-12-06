@@ -1,0 +1,8 @@
+package com.ssafy.postComment.model;
+
+import io.swagger.annotations.ApiModel;
+
+@ApiModel(value = "PostCommentDto : 여행 후기 댓글 정보", description = "여행 후기 댓글의 상세 정보를 나타낸다.")
+public class PostComment {
+
+}

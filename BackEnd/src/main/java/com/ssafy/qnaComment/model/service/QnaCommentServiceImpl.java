@@ -1,6 +1,5 @@
 package com.ssafy.qnaComment.model.service;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -16,7 +15,6 @@ public class QnaCommentServiceImpl implements QnaCommentService {
 		super();
 		this.qnaCommentMapper = qnaCommentMapper;
 	}
-
 	
 	@Override
 	public List<QnaComment> listQnaComment() throws Exception {
@@ -24,29 +22,27 @@ public class QnaCommentServiceImpl implements QnaCommentService {
 	}
 
 	@Override
-	public void registQnaComment(QnaComment qnaComment) throws SQLException {
+	public void registQnaComment(QnaComment qnaComment) throws Exception {
 		qnaCommentMapper.registQnaComment(qnaComment);
 	}
 
 	@Override
-	public void deleteQnaComment(int idx) throws SQLException {
+	public void deleteQnaComment(int idx) throws Exception {
 		qnaCommentMapper.deleteQnaComment(idx);
 	}
 
 	@Override
-	public void modifyQnaComment(QnaComment qnaComment) throws SQLException {
+	public void modifyQnaComment(QnaComment qnaComment) throws Exception {
 		qnaCommentMapper.modifyQnaComment(qnaComment);
 	}
 
 	@Override
-	public QnaComment viewQnaComment(int idx) throws SQLException {
+	public QnaComment viewQnaComment(int idx) throws Exception {
 		return qnaCommentMapper.viewQnaComment(idx);
 	}
 
 	@Override
-	public QnaComment getQnaComment(int idx) throws SQLException {
+	public QnaComment getQnaComment(int idx) throws Exception {
 		return qnaCommentMapper.getQnaComment(idx);
 	}
-	
-	
 }

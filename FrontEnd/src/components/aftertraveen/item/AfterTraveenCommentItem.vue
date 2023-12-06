@@ -1,9 +1,13 @@
-<script setup></script>
+<script setup>
+const props = defineProps({
+  postComment: Object,
+});
+</script>
 
 <template>
   <div class="wrap">
-    <div class="name">박핑가핑고</div>
-    <div class="content">정말 추천하는 코스네요</div>
+    <div class="name">{{ props.postComment.userName }}</div>
+    <div class="content">{{ props.postComment.content }}</div>
   </div>
 </template>
 
