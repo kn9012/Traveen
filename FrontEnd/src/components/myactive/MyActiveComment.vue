@@ -14,7 +14,6 @@ const postComments = ref([]);
 onMounted(() => {
   // 내가 쓴 여행 후기 댓글 불러오기
   getPostCommentList();
-  console.log(postComments);
 });
 
 const getPostCommentList = () => {

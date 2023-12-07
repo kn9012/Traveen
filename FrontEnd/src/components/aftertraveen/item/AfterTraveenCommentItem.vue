@@ -24,7 +24,6 @@ const onClickDeleteComment = () => {
   );
 };
 
-
 </script>
 
 <template>

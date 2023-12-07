@@ -10,6 +10,7 @@ export const usePostCommentStore = defineStore(
     const addComment = (postComment) => {
       commentList.value.push(postComment);
     };
+
     const deleteComment = (idx) => {
       commentList.value = commentList.value.filter((item) => item.idx !== idx);
     };

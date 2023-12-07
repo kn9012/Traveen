@@ -130,7 +130,7 @@ const goAftertraveenListpage = () => {
 const postComment = ref({
   idx: "",
   userIdx: userInfo.value.idx,
-  userName: "",
+  userName: userInfo.value.userName,
   postIdx: idx,
   content: "",
 });
@@ -141,7 +141,7 @@ const writeAftertraveenComment = () => {
     () => {
       addComment(postComment.value);
       postComment.value.content = "";
-      console.log(commentList);
+      location.reload();
     },
     (error) => console.log(error)
   );
@@ -153,7 +153,6 @@ const listAftertraveenComment = () => {
     ({ data }) => {
       setCommentList(data);
       postComments.value = data;
-      console.log(commentList);
     },
     (error) => console.log(error)
   );
