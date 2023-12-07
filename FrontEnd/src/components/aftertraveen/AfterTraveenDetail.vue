@@ -19,7 +19,6 @@ const post = ref({});
 const postComments = ref([]);
 
 const { idx } = route.params;
-//const courseIdx = ref("3");
 
 const items = ref([]);
 
@@ -140,8 +139,8 @@ const writeAftertraveenComment = () => {
   registPostComment(
     postComment.value,
     () => {
-      postComment.value.content = "";
       addComment(postComment.value);
+      postComment.value.content = "";
       console.log(commentList);
     },
     (error) => console.log(error)

@@ -9,20 +9,19 @@ li {
     &:hover {
       background-color: #edf6f1;
     }
-}
+  }
   
-.right {
+  .right {
     display: flex;
     align-items: center;
     font-size: 0.9em;
-  
+    
+    .title {
+      color: #8b95a1;
+      margin: 0 30px 0 30px;
+    }
     .date {
       color: #8b95a1;
-    }
-    img {
-      width: 20px;
-      height: 20px;
-      margin: 0 6px 0 30px;
     }
 }
   

@@ -21,6 +21,10 @@ public class PostComment {
 	@ApiModelProperty(value = "post 고유번호")
 	private int postIdx;
 	
+	/* post 제목 */
+	@ApiModelProperty(value = "post 제목")
+	private String title;
+	
 	/* 내용 */
 	@ApiModelProperty(value = "내용")
 	private String content;
@@ -61,6 +65,14 @@ public class PostComment {
 		this.postIdx = postIdx;
 	}
 
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
 	public String getContent() {
 		return content;
 	}
@@ -80,6 +92,6 @@ public class PostComment {
 	@Override
 	public String toString() {
 		return "PostComment [idx=" + idx + ", userIdx=" + userIdx + ", userName=" + userName + ", postIdx=" + postIdx
-				+ ", content=" + content + ", createDate=" + createDate + "]";
+				+ ", title=" + title + ", content=" + content + ", createDate=" + createDate + "]";
 	}
 }

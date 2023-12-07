@@ -21,9 +21,9 @@
 	
 	<!-- 사용자별 PostComment 목록 -->
 	<select id="listPostCommentByUserIdx" resultMap="postComment">
-		select pc.idx, u.idx as userIdx, u.user_name as userName, pc.post_idx, pc.content, pc.create_date
-		from post_comments pc, users u
-		where pc.user_idx = u.idx and pc.user_idx  = #{userIdx}
+		select pc.idx, u.idx as userIdx, u.user_name as userName, pc.post_idx, pc.content, date_format(pc.create_date, '%Y-%m-%d') create_date, p.title
+		from post_comments pc, users u, posts p
+		where pc.user_idx = u.idx and pc.user_idx  = #{userIdx} and p.idx = pc.post_idx
 		order by create_date
 	</select>
 

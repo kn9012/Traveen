@@ -1,0 +1,89 @@
+package com.ssafy.postComment.model;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(value = "PostCommentDto : 여행 후기 댓글 정보", description = "여행 후기 댓글의 상세 정보를 나타낸다.")
+public class PostComment {
+	/* 고유번호 */
+	@ApiModelProperty(value = "고유번호")
+	private int idx;
+	
+	/* user 고유번호 */
+	@ApiModelProperty(value = "user 고유번호")
+	private int userIdx;
+	
+	/* 작성자 이름 */
+	@ApiModelProperty(value = "작성자 이름")
+	private String userName;
+	
+	/* post 고유번호 */
+	@ApiModelProperty(value = "post 고유번호")
+	private int postIdx;
+	
+	/* post 이름 */
+	@ApiModelProperty(value = "post 이름")
+	private int postName;
+	
+	/* 내용 */
+	@ApiModelProperty(value = "내용")
+	private String content;
+	
+	/* 작성일시 */
+	@ApiModelProperty(value = "작성일시")
+	private String createDate;
+
+	public int getIdx() {
+		return idx;
+	}
+
+	public void setIdx(int idx) {
+		this.idx = idx;
+	}
+
+	public int getUserIdx() {
+		return userIdx;
+	}
+
+	public void setUserIdx(int userIdx) {
+		this.userIdx = userIdx;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public int getPostIdx() {
+		return postIdx;
+	}
+
+	public void setPostIdx(int postIdx) {
+		this.postIdx = postIdx;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public String getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(String createDate) {
+		this.createDate = createDate;
+	}
+
+	@Override
+	public String toString() {
+		return "PostComment [idx=" + idx + ", userIdx=" + userIdx + ", userName=" + userName + ", postIdx=" + postIdx
+				+ ", content=" + content + ", createDate=" + createDate + "]";
+	}
+}

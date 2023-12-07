@@ -14,8 +14,9 @@ const goAfterTraveenDetailPage = () => {
 
 <template>
   <li @click="goAfterTraveenDetailPage">
-    <span class="title">{{ props.postComment.content }}</span>
+    <span class="content">{{ props.postComment.content }}</span>
     <div class="right">
+      <span class="title">{{ props.postComment.title }}</span>
       <span class="date">{{ props.postComment.createDate }}</span>
     </div>
   </li>
