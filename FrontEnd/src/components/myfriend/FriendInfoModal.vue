@@ -114,7 +114,7 @@ const getListCourseitem = (idx) => {
             <div class="email">{{ props.friend.emailId }}@{{ props.friend.emailDomain }}</div>
             <div class="num-wrap">
               <span class="follower">팔로워 {{ followerLen }}</span>
-              <span class="following">팔로워 {{ followingLen }}</span>
+              <span class="following">팔로잉 {{ followingLen }}</span>
             </div>
           </div>
         </div>
