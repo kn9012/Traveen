@@ -136,15 +136,18 @@ const postComment = ref({
 });
 
 const writeAftertraveenComment = () => {
-  registPostComment(
-    postComment.value,
-    () => {
-      addComment(postComment.value);
-      postComment.value.content = "";
-      location.reload();
-    },
-    (error) => console.log(error)
-  );
+   if (postComment.value.content === "") {
+    alert("댓글 내용을 입력해주세요.");
+   } else {
+     registPostComment(
+       postComment.value,
+       () => {
+         location.reload();
+         addComment(postComment.value);
+       },
+       (error) => console.log(error)
+     );
+   }
 };
 
 const listAftertraveenComment = () => {
