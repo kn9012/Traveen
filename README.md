@@ -37,6 +37,7 @@
 
 ## 주요 기능
 
-![FireShot Capture 002 - 주요 기능 정리 - www notion so](https://github.com/kn9012/Traveen/assets/102653381/5ea7b88c-106b-483a-8808-57b2a5e379c9)
+![FireShot Capture 002 - 주요 기능 정리 - www notion so](https://github.com/kn9012/Traveen/assets/102653381/afc93d40-3b7e-4ce9-a0e1-cb534a679217)
+
 
 <br/>
