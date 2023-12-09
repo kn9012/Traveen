@@ -123,6 +123,12 @@
 		where lt.user_idx = #{userId}
 	</select>
 	
+	<!-- LikeTrip idx로 tripinfo idx 찾기 -->
+<!-- 	<select id="getTripinfoByLikeTripIdx" parameterType="int" resultType="int"> -->
+<!-- 		select tripinfo_idx -->
+<!-- 		from like_trip -->
+<!-- 		where idx = #{idx} -->
+<!-- 	</select> -->
 	
 	<!-- 좋아요 카운트업 -->
 	<update id="updateLike" parameterType="int">

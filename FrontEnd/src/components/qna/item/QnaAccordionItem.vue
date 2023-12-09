@@ -109,7 +109,7 @@ const onModifyQnaComment = () => {
       <div class="title">{{ props.qna.title }}</div>
       <div class="content">{{ props.qna.content }}</div>
     </div>
-    <div class="closeBtn-wrap" @click="onDeleteQna" v-show="qna.userIdx === userInfo.idx">
+    <div class="closeBtn-wrap" @click="onDeleteQna" v-if="props.qna.userIdx === userInfo.idx">
       <img src="@/assets/img/icon_close.png" alt="" />
     </div>
   </div>
