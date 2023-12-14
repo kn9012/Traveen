@@ -8,7 +8,7 @@
 ## Team
 |팀장|팀원|
 |------|---|
-|김유나|김내림|
+|<a href="https://github.com/">김유나</a>|<a href="https://github.com/naerim">김내림</a>|
 
 <br/>
 
