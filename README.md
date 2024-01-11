@@ -1,6 +1,6 @@
 # Traveen 🎥
 - 공공데이터를 활용한 촬영지 기반 여행 계획 및 여행지 정보 공유 서비스
-
+- Travel + Screen
 - SSAFY 10기 관통 프로젝트 🏆우수상
 
 <br/>
@@ -34,6 +34,15 @@
 ![image](https://github.com/kn9012/Traveen/assets/102653381/4f98ca03-29cb-4c3b-af73-e3b8aa5821c2)
 
 <br/>
+
+## Usecase
+
+![image](https://github.com/kn9012/Traveen/assets/102653381/731316f5-652f-4f8c-b6cb-8ec6d573540a)
+![image](https://github.com/kn9012/Traveen/assets/102653381/f1214294-70ef-4cf1-bb33-e6458caa7870)
+![image](https://github.com/kn9012/Traveen/assets/102653381/50b32ce8-387c-4253-aed3-8af1c3753276)
+![image](https://github.com/kn9012/Traveen/assets/102653381/a2ae273b-dd46-42ed-9f4c-8a758e6e1986)
+
+<br />
 
 ## 주요 기능
 
