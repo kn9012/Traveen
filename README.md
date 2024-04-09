@@ -8,9 +8,29 @@
 <br/>
 
 ## Team
-|팀장|팀원|
-|------|---|
-|<a href="https://github.com/">김유나</a>|<a href="https://github.com/naerim">김내림</a>|
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://avatars.githubusercontent.com/naerim" width="150px;"  alt="김내림"/>
+    </td>
+    <td align="center">
+      <img src="https://avatars.githubusercontent.com/kn9012" width="150px;" alt="김유나"/>
+    </td>
+  </tr>
+  <tr>    
+    <td align="center">
+      <a href="https://github.com/naerim">
+        <div>김내림</div>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/kn9012">
+        <div>김유나</div>
+      </a>
+    </td>
+  </tr>
+</table>
+
 
 <br/>
 
@@ -20,9 +40,9 @@
 - 2023년 10월 31일 ~ 2023년 11월 24일
 
 #### Backend
-<img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white"> <img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=for-the-badge&logo=Spring Boot&logoColor=white"> <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white"> <img src="https://img.shields.io/badge/MyBatis-D90404?style=for-the-badge&logoColor=white"> <img src="https://img.shields.io/badge/Eclipse-2C2255?style=for-the-badge&logo=Eclipse&logoColor=white"> 
+<img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=OpenJDK&logoColor=white"> <img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=for-the-badge&logo=Spring Boot&logoColor=white"> <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white"> <img src="https://img.shields.io/badge/MyBatis-D90404?style=for-the-badge&logo=mybatis&logoColor=white"> <img src="https://img.shields.io/badge/Eclipse-2C2255?style=for-the-badge&logo=Eclipse&logoColor=white"> 
 #### Frontend
-<img src="https://img.shields.io/badge/vue.js-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white"> <img src="https://img.shields.io/badge/visual studio code-007ACC?style=for-the-badge&logo=visual studio code&logoColor=white"> 
+<img src="https://img.shields.io/badge/Javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=FFF"/> <img src="https://img.shields.io/badge/Html5-E34F26?style=for-the-badge&logo=html5&logoColor=FFF"/> <img src="https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=FFF"/> <img src="https://img.shields.io/badge/vue.js-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white"> <img src="https://img.shields.io/badge/visual studio code-007ACC?style=for-the-badge&logo=visual studio code&logoColor=white"> 
 #### API
 <img src="https://img.shields.io/badge/kakao map-0583F2?style=for-the-badge&logo=kakao&logoColor=white">
 
